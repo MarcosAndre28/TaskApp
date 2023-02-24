@@ -9,4 +9,6 @@
     <string name="e_mail">E-mail</string>
     <string name="login">Login</string>
     <string name="recovery_account">Recuperar conta</string>
+    <string name="send">Enviar</string>
+    <string name="info_recover">Informe seu e-mail de cadastro para receber \num link para alteração de senha.</string>
 </resources>

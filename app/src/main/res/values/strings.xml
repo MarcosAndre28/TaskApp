@@ -14,4 +14,12 @@
     <string name="status_task_todo">A Fazer</string>
     <string name="status_task_doing">Fazendo</string>
     <string name="status_task_done">Feitas</string>
+    <string name="description">Descrição</string>
+    <string name="info">Criar nova tela de login do app</string>
+    <string name="status">Status</string>
+    <string name="done">Feitas</string>
+    <string name="doing">Fazendo</string>
+    <string name="todo">A Fazer</string>
+    <string name="save">Salvar</string>
+    <string name="new_task">Botão adicionar nova tarefa</string>
 </resources>

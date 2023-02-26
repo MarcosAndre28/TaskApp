@@ -11,4 +11,7 @@
     <string name="recovery_account">Recuperar conta</string>
     <string name="send">Enviar</string>
     <string name="info_recover">Informe seu e-mail de cadastro para receber \num link para alteração de senha.</string>
+    <string name="status_task_todo">A Fazer</string>
+    <string name="status_task_doing">Fazendo</string>
+    <string name="status_task_done">Feitas</string>
 </resources>

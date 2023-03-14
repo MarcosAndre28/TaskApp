@@ -25,14 +25,15 @@
             android:textColor="@color/white"/>
 
         <EditText
+            android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:padding="16dp"
             android:layout_marginTop="4dp"
+            android:autofillHints="emailAddress"
             android:background="@drawable/bg_edit_text"
             android:hint="@string/hint_email"
-            android:autofillHints="emailAddress" />
+            android:inputType="textEmailAddress"
+            android:padding="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,14 +43,15 @@
             android:textColor="@color/white"/>
 
         <EditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:padding="16dp"
             android:layout_marginTop="4dp"
+            android:autofillHints="password"
             android:background="@drawable/bg_edit_text"
             android:hint="@string/hint_password"
-            android:autofillHints="password" />
+            android:inputType="textPassword"
+            android:padding="16dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"

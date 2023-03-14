@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentHomeBinding
-import com.example.taskapp.databinding.FragmentTodoBinding
 import com.example.taskapp.ui.adapter.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 

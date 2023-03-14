@@ -11,9 +11,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_back">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recovery_account"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"/>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -42,23 +59,25 @@
                 android:textColor="@color/white" />
 
             <EditText
+                android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:autofillHints="emailAddress"
                 android:background="@drawable/bg_edit_text"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
-                android:padding="16dp"
-                android:autofillHints="emailAddress" />
+                android:padding="16dp" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRecover"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_btn"
                 android:text="@string/send"
-                android:textSize="20sp"
                 android:textColor="@color/color_default"
+                android:textSize="20sp"
                 app:backgroundTint="@null" />
 
             <ProgressBar

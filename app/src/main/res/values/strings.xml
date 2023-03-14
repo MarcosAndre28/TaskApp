@@ -22,4 +22,5 @@
     <string name="todo">A Fazer</string>
     <string name="save">Salvar</string>
     <string name="new_task">Botão adicionar nova tarefa</string>
+    <string name="new_taskbar">Nova tarefa</string>
 </resources>

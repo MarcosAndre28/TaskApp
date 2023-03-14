@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentLoginBinding
@@ -37,7 +38,25 @@ class LoginFragment : Fragment() {
         }
 
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
+            validateData()
+        }
+    }
+
+    private fun validateData(){
+        val email = binding.edtEmail.text.toString().trim()
+        val password = binding.edtPassword.text.toString().trim()
+
+        if (email.isNotEmpty()){
+            if (password.isNotEmpty()){
+                Toast.makeText(requireContext(), "Tudo certo", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_global_homeFragment)
+            }
+            else {
+                Toast.makeText(requireContext(), "Preencha sua senha", Toast.LENGTH_SHORT).show()
+            }
+        }
+        else {
+            Toast.makeText(requireContext(), "Preencha seu e-mail", Toast.LENGTH_SHORT).show()
         }
     }
 

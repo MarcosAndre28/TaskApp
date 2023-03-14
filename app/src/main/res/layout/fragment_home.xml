@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeFragment"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    tools:context=".ui.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -21,12 +21,12 @@
                 android:layout_height="0dp"
                 android:background="@color/color_default"
                 android:elevation="0dp"
-                app:tabIndicatorColor="@color/white"
-                app:tabTextAppearance="@style/CustomTabLayout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btnLogout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:tabIndicatorColor="@color/white"
+                app:tabTextAppearance="@style/CustomTabLayout"
                 app:tabTextColor="@color/white" />
 
             <ImageButton

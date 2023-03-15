@@ -57,10 +57,9 @@
               android:layout_height="wrap_content"
               android:layout_marginTop="4dp"
               android:autofillHints="emailAddress"
-              android:background="@drawable/bg_edit_text"
+              style="@style/EditTextTheme"
               android:hint="@string/hint_email"
-              android:inputType="textEmailAddress"
-              android:padding="16dp" />
+              android:inputType="textEmailAddress"/>
 
           <TextView
               android:layout_width="wrap_content"
@@ -75,20 +74,17 @@
               android:layout_height="wrap_content"
               android:layout_marginTop="4dp"
               android:autofillHints="password"
-              android:background="@drawable/bg_edit_text"
+              style="@style/EditTextTheme"
               android:hint="@string/hint_password"
-              android:inputType="textPassword"
-              android:padding="16dp" />
+              android:inputType="textPassword"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btnCreateAccount"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginTop="16dp"
-              android:background="@drawable/bg_btn"
-              android:text="@string/create_account"
-              android:textColor="@color/color_default"
-              app:backgroundTint="@null" />
+              style="@style/ButtonTheme"
+              android:text="@string/create_account"/>
 
           <ProgressBar
               android:id="@+id/progressBar"

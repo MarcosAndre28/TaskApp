@@ -11,6 +11,7 @@ import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentDoneBinding
 import com.example.taskapp.databinding.FragmentFormTaskBinding
 import com.example.taskapp.util.initToolbar
+import com.example.taskapp.util.showBottomSheet
 
 class FormTaskFragment : Fragment() {
 
@@ -44,7 +45,7 @@ class FormTaskFragment : Fragment() {
         if (description.isNotEmpty()) {
             Toast.makeText(requireContext(), "Tudo certo", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(requireContext(), "Preencha uma descrição", Toast.LENGTH_SHORT).show()
+          showBottomSheet(message = getString(R.string.description_empty_form_fragment))
         }
     }
 

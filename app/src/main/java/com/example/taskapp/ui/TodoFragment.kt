@@ -1,19 +1,20 @@
 package com.example.taskapp.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskapp.R
 import com.example.taskapp.data.model.Status
 import com.example.taskapp.data.model.Task
 import com.example.taskapp.databinding.FragmentTodoBinding
 import com.example.taskapp.ui.adapter.TaskAdapter
+import com.example.taskapp.ui.adapter.TaskTopAdapter
 
 
 class TodoFragment : Fragment() {
@@ -22,6 +23,7 @@ class TodoFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var taskAdapter: TaskAdapter
+    private lateinit var taskTopAdapter: TaskTopAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,13 +47,21 @@ class TodoFragment : Fragment() {
     }
 
     private fun initRecyclerView(){
+
+        taskTopAdapter = TaskTopAdapter { task, option ->
+            optionSelected(task,option)
+        }
+
         taskAdapter = TaskAdapter(requireContext()){task, option ->
             optionSelected(task,option)
         }
+
+        val concatAdapter = ConcatAdapter(taskTopAdapter,taskAdapter)
+
         with(binding.rvTasks){
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
-            adapter = taskAdapter
+            adapter = concatAdapter
 
         }
     }
@@ -78,6 +88,11 @@ class TodoFragment : Fragment() {
     }
 
     private fun getTask() {
+
+        val teskTopList = listOf(
+            Task("0","Top list",Status.TODO),
+        )
+
      val teskList = listOf(
          Task("0","Criar nova tela do app",Status.TODO),
          Task("1","Validar informações na tela de login",Status.TODO),
@@ -85,6 +100,10 @@ class TodoFragment : Fragment() {
          Task("3","Salvar token no localmente",Status.TODO),
          Task("4","Criar funcionalidade de logout no app",Status.TODO)
      )
+
+
+
+        taskTopAdapter.submitList(teskTopList)
 
         taskAdapter.submitList(teskList)
     }

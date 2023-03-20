@@ -71,11 +71,11 @@ class DoingFragment : Fragment() {
 
     private fun getTask() {
         val teskList = listOf(
-            Task("0","Criar nova tela do app",Status.TODO),
-            Task("1","Validar informações na tela de login",Status.TODO),
-            Task("2","Adicionar nova funcionalidade no app",Status.TODO),
-            Task("3","Salvar token no localmente",Status.TODO),
-            Task("4","Criar funcionalidade de logout no app",Status.TODO)
+            Task("0","Criar nova tela do app",Status.DOING),
+            Task("1","Validar informações na tela de login",Status.DOING),
+            Task("2","Adicionar nova funcionalidade no app",Status.DOING),
+            Task("3","Salvar token no localmente",Status.DOING),
+            Task("4","Criar funcionalidade de logout no app",Status.DOING)
         )
 
         taskAdapter.submitList(teskList)

@@ -70,11 +70,11 @@ class DoneFragment : Fragment() {
 
     private fun getTask() {
         val teskList = listOf(
-            Task("0","Criar nova tela do app",Status.TODO),
-            Task("1","Validar informações na tela de login",Status.TODO),
-            Task("2","Adicionar nova funcionalidade no app",Status.TODO),
-            Task("3","Salvar token no localmente",Status.TODO),
-            Task("4","Criar funcionalidade de logout no app",Status.TODO)
+            Task("0","Criar nova tela do app",Status.DONE),
+            Task("1","Validar informações na tela de login",Status.DONE),
+            Task("2","Adicionar nova funcionalidade no app",Status.DONE),
+            Task("3","Salvar token no localmente",Status.DONE),
+            Task("4","Criar funcionalidade de logout no app",Status.DONE)
         )
 
         taskAdapter.submitList(teskList)

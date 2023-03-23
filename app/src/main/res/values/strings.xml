@@ -43,4 +43,9 @@
     <!-- Form Fragment -->
     <string name="description_empty_form_fragment">Preencha uma descrição</string>
 
+    <!-- Home Fragment -->
+    <string name="text__title_dialog_confirm_lagout">Deseja sair da sua conta ?</string>
+    <string name="text_button_dialog_confirm_lagout">Confirmar</string>
+    <string name="text_message_dialog_confirm_lagout">Aperte em confirmar para sair da sua conta</string>
+
 </resources>

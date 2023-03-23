@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         auth = Firebase.auth
 
         initTabs()
-        initListerners()
+        initListeners()
     }
 
     private fun initTabs(){
@@ -55,7 +55,7 @@ class HomeFragment : Fragment() {
         }.attach()
     }
 
-    private fun initListerners(){
+    private fun initListeners(){
         binding.btnLogout.setOnClickListener {
             showBottomSheet(
                 titleButton = R.string.text_button_dialog_confirm_lagout , titleDialog = R.string.text__title_dialog_confirm_lagout , message = getString(R.string.text_message_dialog_confirm_lagout), onClick = {

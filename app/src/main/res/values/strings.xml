@@ -36,6 +36,8 @@
     <string name="email_empty">Preencha seu e-mail</string>
     <string name="password_empty">Preencha sua senha</string>
 
+    <!-- Recover Fragment -->
+    <string name="text_message_recover_account_fragment">Pronto, acabmaos de enviar um link para seu email</string>
     <!-- Register Fragment -->
     <string name="email_empty_register_fragment">Preencha um e-mail valido</string>
     <string name="password_empty_register_fragment">Preencha sua senha</string>

@@ -35,6 +35,7 @@
     <string name="text_button_warning">Entendi</string>
     <string name="email_empty">Preencha seu e-mail</string>
     <string name="password_empty">Preencha sua senha</string>
+    <string name="error_generic">Ocorreu um error, tente novamente mais tarde</string>
 
     <!-- Recover Fragment -->
     <string name="text_message_recover_account_fragment">Pronto, acabmaos de enviar um link para seu email</string>
@@ -44,6 +45,7 @@
 
     <!-- Form Fragment -->
     <string name="description_empty_form_fragment">Preencha uma descrição</string>
+    <string name="text_save_sucess_form_fragment">Tarefa salva com sucesso</string>
 
     <!-- Home Fragment -->
     <string name="text__title_dialog_confirm_lagout">Deseja sair da sua conta ?</string>

@@ -36,6 +36,8 @@
     <string name="email_empty">Preencha seu e-mail</string>
     <string name="password_empty">Preencha sua senha</string>
     <string name="error_generic">Ocorreu um error, tente novamente mais tarde</string>
+    <string name="text_list_task_empty">Nenhuma tarefa cadastrada</string>
+    <string name="text_load_list_task">Aguarde, estamos carregando as informações</string>
 
     <!-- Recover Fragment -->
     <string name="text_message_recover_account_fragment">Pronto, acabmaos de enviar um link para seu email</string>

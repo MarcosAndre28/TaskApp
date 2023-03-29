@@ -38,6 +38,10 @@
     <string name="error_generic">Ocorreu um error, tente novamente mais tarde</string>
     <string name="text_list_task_empty">Nenhuma tarefa cadastrada</string>
     <string name="text_load_list_task">Aguarde, estamos carregando as informações</string>
+    <string name="text_delete_sucess_task">Tarefa removida com sucesso</string>
+    <string name="text_button_dialog_confirm">Confirmar</string>
+    <string name="text_title_dialog_delete">Deseja remover esta tarefa</string>
+    <string name="text_message_dialog_delete">Aperte em confirmar para remover a tarefa</string>
 
     <!-- Recover Fragment -->
     <string name="text_message_recover_account_fragment">Pronto, acabmaos de enviar um link para seu email</string>
@@ -51,7 +55,6 @@
 
     <!-- Home Fragment -->
     <string name="text__title_dialog_confirm_lagout">Deseja sair da sua conta ?</string>
-    <string name="text_button_dialog_confirm_lagout">Confirmar</string>
     <string name="text_message_dialog_confirm_lagout">Aperte em confirmar para sair da sua conta</string>
 
 </resources>

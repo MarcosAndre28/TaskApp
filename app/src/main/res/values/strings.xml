@@ -11,7 +11,7 @@
     <string name="doing">Fazendo</string>
     <string name="todo">A Fazer</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Auth Fragment -->
     <string name="hint_password">Digite sua senha</string>
     <string name="create_account">Criar conta</string>
     <string name="password">Senha</string>
@@ -22,6 +22,7 @@
     <string name="send">Enviar</string>
     <string name="info_recover">Informe seu e-mail de cadastro para receber \num link para alteração de senha.</string>
 
+    <!-- Status Fragment -->
     <string name="description">Descrição</string>
     <string name="info">Criar nova tela de login do app</string>
     <string name="status">Status</string>

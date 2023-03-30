@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.taskapp.R
 import com.example.taskapp.data.model.Status
 import com.example.taskapp.data.model.Task
@@ -32,6 +33,8 @@ class FormTaskFragment : Fragment() {
     private lateinit var reference: DatabaseReference
     private lateinit var auth: FirebaseAuth
 
+    private val args: FormTaskFragmentArgs by navArgs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +51,17 @@ class FormTaskFragment : Fragment() {
         auth = Firebase.auth
 
         initListener()
+        getArgs()
+    }
+
+
+    private fun getArgs(){
+        args.task.let {
+            if (it != null){
+                this.task = it
+                configTask()
+            }
+        }
     }
 
     private fun initListener() {
@@ -65,13 +79,35 @@ class FormTaskFragment : Fragment() {
 
     }
 
+    private fun configTask(){
+        newTask = false
+        status = task.status
+        binding.textToolbar.setText(R.string.text_toolbar_update)
+
+        binding.editDescription.setText(task.description)
+
+        setStatus()
+    }
+
+    private fun setStatus(){
+        binding.rbStatus.check(
+            when(task.status){
+                Status.TODO -> R.id.rb_todo
+                Status.DOING -> R.id.rbDoing
+                else -> R.id.rbDone
+            }
+        )
+    }
+
     private fun validateData() {
         val description = binding.editDescription.text.toString().trim()
 
         if (description.isNotEmpty()) {
             binding.progressBar.isVisible = true
-            if (newTask) task = Task()
-            task.id =reference.database.reference.push().key ?: ""
+            if (newTask){
+                task = Task()
+                task.id =reference.database.reference.push().key ?: ""
+            }
             task.description = description
             task.status = status
            saveTask()

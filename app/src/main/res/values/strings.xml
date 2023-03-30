@@ -52,6 +52,8 @@
     <!-- Form Fragment -->
     <string name="description_empty_form_fragment">Preencha uma descrição</string>
     <string name="text_save_sucess_form_fragment">Tarefa salva com sucesso</string>
+    <string name="text_update_sucess_form_fragment">Tarefa atualizada com sucesso</string>
+    <string name="text_toolbar_update">Editando tarefa...</string>
 
     <!-- Home Fragment -->
     <string name="text__title_dialog_confirm_lagout">Deseja sair da sua conta ?</string>

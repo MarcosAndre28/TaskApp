@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.taskapp.R
@@ -34,6 +35,8 @@ class FormTaskFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
 
     private val args: FormTaskFragmentArgs by navArgs()
+
+    private val viewModel: TaskViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -127,6 +130,7 @@ class FormTaskFragment : Fragment() {
                         findNavController().popBackStack()
                     }
                     else{ // Editando tarefa
+                        viewModel.setUpdateTask(task)
                         binding.progressBar.isVisible = false
                     }
                 }

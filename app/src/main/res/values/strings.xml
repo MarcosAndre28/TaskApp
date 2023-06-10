@@ -56,6 +56,13 @@
     <string name="text_update_sucess_form_fragment">Tarefa atualizada com sucesso</string>
     <string name="text_toolbar_update">Editando tarefa...</string>
 
+    <!-- Erros Firebase Authentication -->
+    <string name="account_not_registered_register_fragment">Nenhuma conta encontrada com este e-mail.</string>
+    <string name="invalid_email_register_fragment">Insira um e-mail válido.</string>
+    <string name="invalid_password_register_fragment">Senha inválida, tente novamente.</string>
+    <string name="email_in_use_register_fragment">Este e-mail já está em uso.</string>
+    <string name="strong_password_register_fragment">Insira uma senha mais forte.</string>
+
     <!-- Home Fragment -->
     <string name="text__title_dialog_confirm_lagout">Deseja sair da sua conta ?</string>
     <string name="text_message_dialog_confirm_lagout">Aperte em confirmar para sair da sua conta</string>

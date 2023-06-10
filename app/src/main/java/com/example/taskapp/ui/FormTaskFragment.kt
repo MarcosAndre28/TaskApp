@@ -14,15 +14,11 @@ import com.example.taskapp.R
 import com.example.taskapp.data.model.Status
 import com.example.taskapp.data.model.Task
 import com.example.taskapp.databinding.FragmentFormTaskBinding
+import com.example.taskapp.util.FirebaseHelper
 import com.example.taskapp.util.initToolbar
 import com.example.taskapp.util.showBottomSheet
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 
-class FormTaskFragment : Fragment() {
+class FormTaskFragment : BaseFragment() {
 
     private var _binding: FragmentFormTaskBinding? = null
     private val binding get() = _binding!!
@@ -30,12 +26,7 @@ class FormTaskFragment : Fragment() {
     private lateinit var task: Task
     private var status: Status = Status.TODO
     private var newTask: Boolean = true
-
-    private lateinit var reference: DatabaseReference
-    private lateinit var auth: FirebaseAuth
-
     private val args: FormTaskFragmentArgs by navArgs()
-
     private val viewModel: TaskViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -45,19 +36,13 @@ class FormTaskFragment : Fragment() {
         _binding = FragmentFormTaskBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(binding.toolbar)
 
-        reference = Firebase.database.reference
-        auth = Firebase.auth
-
         initListener()
         getArgs()
     }
-
-
     private fun getArgs(){
         args.task.let {
             if (it != null){
@@ -66,7 +51,6 @@ class FormTaskFragment : Fragment() {
             }
         }
     }
-
     private fun initListener() {
         binding.btnSave.setOnClickListener {
             validateData()
@@ -81,7 +65,6 @@ class FormTaskFragment : Fragment() {
         }
 
     }
-
     private fun configTask(){
         newTask = false
         status = task.status
@@ -91,7 +74,6 @@ class FormTaskFragment : Fragment() {
 
         setStatus()
     }
-
     private fun setStatus(){
         binding.rbStatus.check(
             when(task.status){
@@ -101,15 +83,14 @@ class FormTaskFragment : Fragment() {
             }
         )
     }
-
     private fun validateData() {
         val description = binding.editDescription.text.toString().trim()
 
         if (description.isNotEmpty()) {
+            hideKeyboard()
             binding.progressBar.isVisible = true
             if (newTask){
                 task = Task()
-                task.id =reference.database.reference.push().key ?: ""
             }
             task.description = description
             task.status = status
@@ -118,10 +99,10 @@ class FormTaskFragment : Fragment() {
           showBottomSheet(message = getString(R.string.description_empty_form_fragment))
         }
     }
-
     private fun saveTask(){
-        reference.child("tasks")
-            .child(auth.currentUser?.uid ?: "")
+        FirebaseHelper.getDatabase()
+            .child("tasks")
+            .child(FirebaseHelper.getIdUser())
             .child(task.id)
             .setValue(task).addOnCompleteListener { result ->
                 if (result.isSuccessful){
@@ -131,6 +112,7 @@ class FormTaskFragment : Fragment() {
                     }
                     else{ // Editando tarefa
                         viewModel.setUpdateTask(task)
+                        findNavController().popBackStack()
                         binding.progressBar.isVisible = false
                     }
                 }
@@ -140,10 +122,8 @@ class FormTaskFragment : Fragment() {
                 }
             }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -14,49 +14,50 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taskapp.R
 import com.example.taskapp.data.model.Status
 import com.example.taskapp.data.model.Task
-import com.example.taskapp.databinding.FragmentDoneBinding
+import com.example.taskapp.databinding.FragmentTasksBinding
 import com.example.taskapp.ui.adapter.TaskAdapter
 import com.example.taskapp.util.StateView
 import com.example.taskapp.util.showBottomSheet
 
-class DoneFragment : Fragment() {
+class TasksFragment : Fragment() {
 
-    private var _binding: FragmentDoneBinding? = null
+    private var _binding: FragmentTasksBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var taskAdapter: TaskAdapter
+
     private val viewModel: TaskViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDoneBinding.inflate(inflater, container, false)
+        _binding = FragmentTasksBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListener()
 
-        observeViewModel()
         initRecyclerView()
+        observeViewModel()
+
         viewModel.getTask()
+
     }
 
-    private fun initRecyclerView() {
-        taskAdapter = TaskAdapter(requireContext()) { task, option ->
-            optionSelected(task, option)
+    private fun initListener() {
+        binding.fabAdd.setOnClickListener {
+            val action = TasksFragmentDirections
+                .actionTasksFragmentToFormTaskFragment(null)
+            findNavController().navigate(action)
         }
 
-        with(binding.rvTasks) {
-            layoutManager = LinearLayoutManager(requireContext())
-            setHasFixedSize(true)
-            adapter = taskAdapter
-
-        }
     }
 
     private fun observeViewModel() {
+
         viewModel.taskList.observe(viewLifecycleOwner) { stateView ->
             when (stateView) {
                 is StateView.OnLoading -> {
@@ -64,7 +65,7 @@ class DoneFragment : Fragment() {
                 }
 
                 is StateView.OnSuccess -> {
-                    val taskList = stateView.data?.filter { it.status == Status.DONE }
+                    val taskList = stateView.data?.filter { it.status == Status.TODO }
 
                     binding.progressBar.isVisible = false
                     listEmpty(taskList ?: emptyList())
@@ -87,7 +88,7 @@ class DoneFragment : Fragment() {
 
                 is StateView.OnSuccess -> {
                     binding.progressBar.isVisible = false
-                    if (stateView.data?.status == Status.DONE) {
+                    if (stateView.data?.status == Status.TODO) {
                         // Armazena a lista atual do adapter
                         val oldList = taskAdapter.currentList
 
@@ -122,11 +123,11 @@ class DoneFragment : Fragment() {
 
                     // Gera uma nova lista a partir da lista antiga já com a tarefa atualizada
                     val newList = oldList.toMutableList().apply {
-                        if (stateView.data?.status == Status.DONE) {
-                            if (!oldList.contains(stateView.data) && stateView.data.status == Status.DONE) {
-                                add(stateView.data)
-                                setPositionRecyclerView()
-                            }
+                        if (!oldList.contains(stateView.data) && stateView.data?.status == Status.TODO) {
+                            add(stateView.data)
+                            setPositionRecyclerView()
+                        }
+                        if (stateView.data?.status == Status.TODO) {
                             find { it.id == stateView.data.id }?.description =
                                 stateView.data.description
 
@@ -185,13 +186,23 @@ class DoneFragment : Fragment() {
         }
     }
 
+    private fun initRecyclerView() {
+
+        taskAdapter = TaskAdapter { task, option ->
+            optionSelected(task, option)
+        }
+
+
+        with(binding.rvTasks) {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+
+        }
+    }
+
     private fun optionSelected(task: Task, option: Int) {
         when (option) {
-            TaskAdapter.SELECT_BACK -> {
-                task.status = Status.DOING
-                viewModel.updateTask(task)
-            }
-
             TaskAdapter.SELECT_REMOVE -> {
                 showBottomSheet(
                     titleDialog = R.string.text_title_dialog_delete,
@@ -204,8 +215,8 @@ class DoneFragment : Fragment() {
             }
 
             TaskAdapter.SELECT_EDIT -> {
-                val action = HomeFragmentDirections
-                    .actionHomeFragmentToFormTaskFragment(task)
+                val action = TasksFragmentDirections
+                    .actionTasksFragmentToFormTaskFragment(task)
                 findNavController().navigate(action)
             }
 
@@ -214,19 +225,6 @@ class DoneFragment : Fragment() {
                     .show()
             }
         }
-    }
-
-    private fun listEmpty(taskList: List<Task>) {
-        binding.textInfo.text = if (taskList.isEmpty()) {
-            getString(R.string.text_list_task_empty)
-        } else {
-            ""
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun setPositionRecyclerView() {
@@ -252,5 +250,18 @@ class DoneFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun listEmpty(taskList: List<Task>) {
+        binding.textInfo.text = if (taskList.isEmpty()) {
+            getString(R.string.text_list_task_empty)
+        } else {
+            ""
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

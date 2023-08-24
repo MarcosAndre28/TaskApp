@@ -20,17 +20,6 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_back"
-                app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btnEdit"
-                app:tint="@color/color_default" />
-
             <TextView
                 android:id="@+id/textDescription"
                 android:layout_width="wrap_content"
@@ -94,17 +83,6 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/btnEdit"
                 app:layout_constraintTop_toTopOf="@+id/btnEdit" />
-
-            <ImageButton
-                android:id="@+id/btnNext"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_next"
-                app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btnEdit"
-                app:tint="@color/color_default" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

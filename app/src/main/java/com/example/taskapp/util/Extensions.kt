@@ -7,11 +7,11 @@ import com.example.taskapp.R
 import com.example.taskapp.databinding.BottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-fun Fragment.initToolbar(toolbar: Toolbar){
+fun Fragment.initToolbar(toolbar: Toolbar) {
     (activity as AppCompatActivity).setSupportActionBar(toolbar)
     (activity as AppCompatActivity).title = ""
     (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    toolbar.setNavigationOnClickListener{activity?.onBackPressed()}
+    toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
 }
 
 fun Fragment.showBottomSheet(
@@ -19,9 +19,9 @@ fun Fragment.showBottomSheet(
     titleButton: Int? = null,
     message: String,
     onClick: () -> Unit = {}
-){
-    val bottomSheetDialog = BottomSheetDialog(requireContext(),R.style.BottomSheetDialog)
-    val binding: BottomSheetBinding = BottomSheetBinding.inflate(layoutInflater,null,false)
+) {
+    val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialog)
+    val binding: BottomSheetBinding = BottomSheetBinding.inflate(layoutInflater, null, false)
     binding.txtTitle.text = getText(titleDialog ?: R.string.text_title_warning)
     binding.txtMesssage.text = message
     binding.btnOk.text = getText(titleButton ?: R.string.text_button_warning)

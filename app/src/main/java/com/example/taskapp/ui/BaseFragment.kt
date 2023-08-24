@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 
 open class BaseFragment : Fragment() {
 
-    fun hideKeyboard(){
+    fun hideKeyboard() {
         val view = activity?.currentFocus
-        if (view != null){
+        if (view != null) {
             val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }

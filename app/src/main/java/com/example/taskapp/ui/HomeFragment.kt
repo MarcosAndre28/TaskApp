@@ -17,7 +17,7 @@ import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
-    private var _binding : FragmentHomeBinding? = null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var auth: FirebaseAuth
@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -39,28 +39,32 @@ class HomeFragment : Fragment() {
         initListeners()
     }
 
-    private fun initTabs(){
+    private fun initTabs() {
         val pageAdapter = ViewPagerAdapter(requireActivity())
         binding.viewPage.adapter = pageAdapter
 
-        pageAdapter.addFragment(TodoFragment(),R.string.status_task_todo)
-        pageAdapter.addFragment(DoingFragment(),R.string.status_task_doing)
-        pageAdapter.addFragment(DoneFragment(),R.string.status_task_done)
+        pageAdapter.addFragment(TodoFragment(), R.string.status_task_todo)
+        pageAdapter.addFragment(DoingFragment(), R.string.status_task_doing)
+        pageAdapter.addFragment(DoneFragment(), R.string.status_task_done)
 
         binding.viewPage.offscreenPageLimit = pageAdapter.itemCount
 
-        TabLayoutMediator(binding.tabs, binding.viewPage){tab, position ->
-        tab.text = getString(pageAdapter.getTitle(position))
+        TabLayoutMediator(binding.tabs, binding.viewPage) { tab, position ->
+            tab.text = getString(pageAdapter.getTitle(position))
 
         }.attach()
     }
 
-    private fun initListeners(){
+    private fun initListeners() {
         binding.btnLogout.setOnClickListener {
             showBottomSheet(
-                titleButton = R.string.text_button_dialog_confirm , titleDialog = R.string.text__title_dialog_confirm_lagout , message = getString(R.string.text_message_dialog_confirm_lagout), onClick = {
+                titleButton = R.string.text_button_dialog_confirm,
+                titleDialog = R.string.text__title_dialog_confirm_lagout,
+                message = getString(R.string.text_message_dialog_confirm_lagout),
+                onClick = {
                     auth.signOut()
-                    findNavController().navigate(R.id.action_homeFragment_to_authentication)}
+                    findNavController().navigate(R.id.action_homeFragment_to_authentication)
+                }
             )
 
         }

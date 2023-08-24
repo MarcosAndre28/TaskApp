@@ -145,6 +145,7 @@ class DoingFragment : Fragment() {
 
                     // Atualiza a tarefa pela posição do adapter
                     taskAdapter.notifyItemChanged(position)
+                    listEmpty(newList)
                 }
 
                 is StateView.OnError -> {
@@ -174,6 +175,7 @@ class DoingFragment : Fragment() {
                         remove(stateView.data)
                     }
                     taskAdapter.submitList(newList)
+                    listEmpty(newList)
                 }
 
                 is StateView.OnError -> {
